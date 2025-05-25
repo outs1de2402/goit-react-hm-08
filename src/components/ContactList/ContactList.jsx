@@ -1,29 +1,32 @@
-import { useDispatch, useSelector } from "react-redux";
-import { deleteContact } from "../../redux/contactsOps";
-import {
-  selectFilteredContacts,
-  selectLoading,
-  selectError,
-} from "../../redux/contactsSlice";
+import { selectError, selectLoading } from "../../redux/contacts/selectors";
+import { selectVisibleContacts } from "../../redux/contacts/slice";
+import Contact from "../Contact/Contact";
 
-export default function ContactList() {
-  const dispatch = useDispatch();
-  const contacts = useSelector(selectFilteredContacts);
-  const loading = useSelector(selectLoading);
+import { useSelector } from "react-redux";
+
+const ContactList = () => {
   const error = useSelector(selectError);
+  const loading = useSelector(selectLoading);
+
+  const visibleContacts = useSelector(selectVisibleContacts);
 
   return (
     <>
-      {loading && <p>Loading...</p>}
-      {error && <p>Error: {error}</p>}
       <ul>
-        {contacts.map(({ id, name, number }) => (
-          <li key={id}>
-            {name}: {number}
-            <button onClick={() => dispatch(deleteContact(id))}>Delete</button>
+        {visibleContacts.map((item) => (
+          <li key={item.id}>
+            <Contact name={item.name} number={item.number} id={item.id} />
           </li>
         ))}
       </ul>
+      {error && (
+        <h2 className="text-gray-800 font-bold flex justify-self-center">NT</h2>
+      )}
+      {loading && (
+        <span className="loading loading-dots text-accent loading-xl flex justify-self-center"></span>
+      )}
     </>
   );
-}
+};
+
+export default ContactList;
