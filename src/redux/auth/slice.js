@@ -42,7 +42,11 @@ const slice = createSlice({
       .addCase(refreshThunk.rejected, (state) => {
         state.isRefreshing = false;
       })
-      .addCase(logoutThunk.fulfilled, () => initialState);
+      .addCase(logoutThunk.fulfilled, (state) => {
+        state.user = { email: null, name: null };
+        state.token = null;
+        state.isLogedIn = false;
+      });
   },
 });
 export const authReducer = slice.reducer;

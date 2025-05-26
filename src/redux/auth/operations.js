@@ -1,15 +1,19 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+// import axios from "axios";
 import toast from "react-hot-toast";
+import { api } from "../../services/api";
+export { api } from "../../services/api";
 
-export const api = axios.create({
-  baseURL: "https://connections-api.goit.global",
-});
+// export const api = axios.create({
+//   baseURL: "https://connections-api.goit.global",
+// });
 
 const setAuthHeader = (token) => {
   api.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
-
+const clearAuthHeader = () => {
+  delete api.defaults.headers.common.Authorization;
+};
 export const registerThunk = createAsyncThunk(
   "register",
   async (body, thunkAPI) => {
@@ -37,6 +41,7 @@ export const loginThunk = createAsyncThunk("login", async (body, thunkAPI) => {
 export const logoutThunk = createAsyncThunk("logout", async (_, thunkAPI) => {
   try {
     await api.post("/users/logout");
+    clearAuthHeader();
   } catch (error) {
     toast.error(error.message);
     return thunkAPI.rejectWithValue(error.message);
