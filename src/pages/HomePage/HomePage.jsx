@@ -7,7 +7,7 @@ const HomePage = () => {
         <div>
           <h1>Sayntres</h1>
           <p className="py-6"></p>
-          <Link to="/register">Sign up</Link>
+          <Link to="/register">Register</Link>
         </div>
       </div>
     </div>

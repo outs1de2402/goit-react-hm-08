@@ -4,6 +4,7 @@ import {
   fetchContacts,
   addContact,
   editContact,
+  logoutThunk,
 } from "./operations";
 
 import { selectItems } from "./selectors";
@@ -42,6 +43,11 @@ const slice = createSlice({
         state.items = state.items.map((item) =>
           item.id === action.payload.id ? action.payload : item
         );
+      })
+      .addCase(logoutThunk.fulfilled, (state) => {
+        state.user = null;
+        state.token = null;
+        state.isLoggedIn = false;
       })
 
       .addMatcher(

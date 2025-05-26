@@ -1,17 +1,21 @@
-import { NavLink } from "react-router-dom";
-const AuthNav = () => {
-  return (
-    <>
-      <div>
-        <nav className="flex  gap-8 items-center">
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/contacts">Contacts</NavLink>
-          <NavLink to="/register">Register</NavLink>
-          <NavLink to="/login">LogIn</NavLink>
-        </nav>
-      </div>
-    </>
-  );
-};
+import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from '../../redux/auth/selectors';
 
-export default AuthNav;
+
+export const Navigation = () => {
+    const isLoggedIn = useSelector(selectIsLoggedIn);
+
+    return (
+        <nav>
+            <NavLink  to="/">
+                Home
+            </NavLink>
+            {isLoggedIn && (
+                <NavLink  to="/contacts">
+                    Contacts
+                </NavLink>
+            )}
+        </nav>
+    );
+};
