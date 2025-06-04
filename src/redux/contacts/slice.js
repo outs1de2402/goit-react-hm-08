@@ -45,9 +45,10 @@ const slice = createSlice({
         );
       })
       .addCase(logoutThunk.fulfilled, (state) => {
-        state.user = null;
-        state.token = null;
-        state.isLoggedIn = false;
+        state.items = [];
+        state.isLoading = false;
+        state.error = null;
+        state.isEdit = null;
       })
 
       .addMatcher(
@@ -87,12 +88,3 @@ const slice = createSlice({
 export const { setLoading, setError, dataFullfilledOperation, isEditContact } =
   slice.actions;
 export const contactsReducer = slice.reducer;
-
-export const selectVisibleContacts = createSelector(
-  [selectItems, selectNameFilter],
-  (contacts, filter) => {
-    return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
-  }
-);
