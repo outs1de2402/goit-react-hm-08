@@ -43,7 +43,7 @@ function RegisterForm() {
                 <fieldset>
                   <label className="label">Name</label>
                   <Field
-                    type="name"
+                    type="text"
                     name="name"
                     className="input"
                     placeholder="Name"

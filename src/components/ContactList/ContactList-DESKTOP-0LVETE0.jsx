@@ -1,5 +1,5 @@
 import { selectError, selectLoading } from "../../redux/contacts/selectors";
-import { selectVisibleContacts } from "../../redux/contacts/slice";
+import { selectVisibleContacts } from "../../redux/contacts/selectors";
 import Contact from "../Contact/Contact";
 
 import { useSelector } from "react-redux";
