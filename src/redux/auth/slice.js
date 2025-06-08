@@ -24,16 +24,16 @@ const slice = createSlice({
       .addCase(registerThunk.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
-        state.isLogedIn = true;
+        state.isLoggedIn = true;
       })
       .addCase(loginThunk.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
-        state.isLogedIn = true;
+        state.isLoggedIn = true;
       })
       .addCase(refreshThunk.fulfilled, (state, action) => {
         state.user = action.payload;
-        state.isLogedIn = true;
+        state.isLoggedIn = true;
         state.isRefreshing = false;
       })
       .addCase(refreshThunk.pending, (state) => {
@@ -45,7 +45,7 @@ const slice = createSlice({
       .addCase(logoutThunk.fulfilled, (state) => {
         state.user = { email: null, name: null };
         state.token = null;
-        state.isLogedIn = false;
+        state.isLoggedIn = false;
       });
   },
 });
