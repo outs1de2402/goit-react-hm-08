@@ -12,7 +12,7 @@ const initialState = {
     name: null,
   },
   token: null,
-  isLogedIn: null,
+  isLoggedIn: null,
   isRefreshing: false,
 };
 

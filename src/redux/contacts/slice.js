@@ -7,8 +7,8 @@ import {
   logoutThunk,
 } from "./operations";
 
-import { selectItems } from "./selectors";
-import { selectNameFilter } from "../filters/selectors";
+// import { selectItems } from "./selectors";
+// import { selectNameFilter } from "../filters/selectors";
 
 const initialState = {
   items: [],
