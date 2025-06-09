@@ -19,12 +19,8 @@ const ContactList = () => {
           </li>
         ))}
       </ul>
-      {error && (
-        <h2 className="text-gray-800 font-bold flex justify-self-center">NT</h2>
-      )}
-      {loading && (
-        <span className="loading loading-dots text-accent loading-xl flex justify-self-center"></span>
-      )}
+      {error && <h2>NT</h2>}
+      {loading && <span></span>}
     </>
   );
 };

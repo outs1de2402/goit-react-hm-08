@@ -79,10 +79,7 @@ const Contact = ({ name, number, id }) => {
 
               {isEdit !== id && (
                 <div>
-                  <h2>
-                    <IoPerson className="fill-accent" />
-                    {values.name}
-                  </h2>
+                  <h2>{values.name}</h2>
                   <p>{values.number}</p>
                   <div className="justify-end card-actions">
                     <button
